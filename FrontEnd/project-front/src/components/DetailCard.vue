@@ -2,7 +2,7 @@
 import { defineProps } from 'vue';
 
 // Emits
-const emits = ['listPizza'];
+const emits = ['listPizza', 'createForm'];
 
 // Props
 const props = defineProps({
@@ -37,7 +37,7 @@ const props = defineProps({
 			<div class="d-flex justify-content-center">
 				<div class="m-2">
                     <button @click="$emit('listPizza', true)" class="me-2 btn btn-danger">Torna alla lista</button>
-                    <button class="me-2 btn btn-danger">Modifica</button>
+                    <button @click="$emit('createForm', 'modify')" class="me-2 btn btn-danger">Modifica</button>
 					<form method="POST">
 						<button class="btn btn-danger">Elimina</button>
 					</form>
