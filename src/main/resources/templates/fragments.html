@@ -99,10 +99,7 @@
 				<a th:if="${#authorization.expression('isAuthenticated()')}"
 					th:insert="~{fragments :: button-detail(@{'/logout'}, 'Logout')}"></a>
 			</div>
-
-
 		</div>
-
 	</header>
 
 </body>

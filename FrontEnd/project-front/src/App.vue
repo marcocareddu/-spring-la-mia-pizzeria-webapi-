@@ -1,0 +1,43 @@
+<script setup>
+import PizzaIndex from './components/PizzaIndex.vue'
+import PizzaHeader from './components/PizzaHeader.vue'
+</script>
+
+<template>
+
+  <PizzaHeader />
+  <PizzaIndex />
+
+	<div class="container">
+		<div class="title d-flex justify-content-center my-3">
+			<h1><i class="fa-solid fa-pizza-slice text-danger"></i> Le Pizze:</h1>
+		</div>
+
+		<!-- Search bar -->
+		<div class="d-flex justify-content-center">
+			<form>
+				<div class="input-group my-3 search-container">
+					<input type="text" name="searched" class="form-control" placeholder="Ricerca una pizza">
+				</div>
+			</form>
+		</div>
+
+		<!-- If list is empty -->
+		<th:block th:if="${list.isEmpty()}">
+			<div class="title d-flex justify-content-center mt-5">
+				<h1>Non è presente nessuna pizza</h1>
+			</div>
+		</th:block>
+
+		<!-- If list contains elements -->
+		<th:block th:if="${!list.isEmpty()}">
+			<div class="card-container d-flex row row-cols-4 justify-content-center">
+				<div th:replace="~{fragments :: card(${list})}"></div>
+			</div>
+		</th:block>
+	</div>
+  
+</template>
+
+<style scoped>
+</style>
