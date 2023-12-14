@@ -11,6 +11,7 @@ const list = ref(true);
 const singlePizza = ref({});
 const showForm = ref(false);
 let formType = "";
+const modifiedPizza = ref({});
 
 const handleSinglePizza = (pizza) => {
 	list.value = false;
@@ -34,14 +35,16 @@ const showPizzaForm = () => {
 	list.value = false;
 	singlePizza.value = {};
 	formType = "create";
+	modifiedPizza.value = {};
 };
 
-const showModifyForm = (action) => {
+const showModifyForm = (data) => {
     showForm.value = true;
     list.value = false;
-    singlePizza.value = {};
-    formType = action;
+    formType = data.action;
+    modifiedPizza.value = data.pizza;
 };
+
 
 </script>
 
@@ -85,6 +88,6 @@ const showModifyForm = (action) => {
 				@single-pizza="handleSinglePizza" />
 			<DetailCard @createForm="showModifyForm" v-if="!list && !showForm" :pizza="singlePizza" @listPizza="handleListPizza" />
 		</div>
-		<PizzaForm v-if="showForm" :pizzaProp="singlePizza" :action="formType" />
+		<PizzaForm v-if="showForm" :pizzaProp="modifiedPizza" :action="formType" />
 	</div>
 </template>

@@ -1,20 +1,19 @@
 <script setup>
-import { defineProps } from 'vue';
-
-// Emits
-const emits = ['listPizza', 'createForm'];
+import { defineProps, defineEmits } from 'vue';
 
 // Props
 const props = defineProps({
-  pizza: {
-    type: Object,
-    required: true
-  }
+    pizza: {
+        type: Object,
+        required: true
+    }
 });
 
+// Emits
+const emits = defineEmits(['listPizza', 'createForm']);
+
 const handleModifyForm = () => {
-    // Emetti l'evento 'createForm' con l'azione 'modify'
-    $emit('createForm', 'edit');
+    emits('createForm', { action: 'modify', pizza: props.pizza }); 
 };
 </script>
 
@@ -42,7 +41,7 @@ const handleModifyForm = () => {
 			<div class="d-flex justify-content-center">
 				<div class="m-2">
                     <button @click="$emit('listPizza', true)" class="me-2 btn btn-danger">Torna alla lista</button>
-                    <button @click="$emit('createForm', 'edit')" class="me-2 btn btn-danger">Modifica</button>
+                    <button @click="handleModifyForm" class="me-2 btn btn-danger">Modifica</button>
 					<form method="POST">
 						<button class="btn btn-danger">Elimina</button>
 					</form>
