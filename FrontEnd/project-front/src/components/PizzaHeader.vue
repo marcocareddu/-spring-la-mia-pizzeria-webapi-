@@ -1,14 +1,14 @@
-<script setup>
-</script>
+<script></script>
 
 <template>
 	<header class="position-fixed shadow d-flex align-items-center">
 		<div class="container justify-content-between d-flex align-items-center">
 			<a>
-				<h1><i class="fa-solid fa-pizza-slice text-danger"></i></h1>
+			 <h1><i class="fa-solid fa-pizza-slice text-danger"></i></h1>
 			</a>
+
 			<div class="d-flex">
-				<button class="btn">Crea nuova pizza</button>
+				<button class="btn btn-danger">Crea nuova pizza</button>
 			</div>
 		</div>
 	</header>
