@@ -1,13 +1,16 @@
 <script setup>
 import { defineProps } from 'vue';
 
+// Emits
+const emits = ['single-pizza'];
+
+// Props
 const props = defineProps({
   pizza: {
     type: Object,
     required: true
   }
 });
-
 </script>
 
 <template>
@@ -18,7 +21,7 @@ const props = defineProps({
             <p class="card-text flex-grow-1">{{ pizza.description }}</p>
             <div class="mt-auto d-flex justify-content-center">
                 <div class="me-2">
-                    <button class="btn btn-danger">Dettaglio</button>
+                    <button @click="$emit('single-pizza', pizza)" class="btn btn-danger">Dettaglio</button>
                 </div>
                 <form method="POST">
                     <button class="btn btn-danger">Elimina</button>
