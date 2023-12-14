@@ -11,6 +11,11 @@ const props = defineProps({
     required: true
   }
 });
+
+const handleModifyForm = () => {
+    // Emetti l'evento 'createForm' con l'azione 'modify'
+    $emit('createForm', 'edit');
+};
 </script>
 
 <template>
@@ -37,7 +42,7 @@ const props = defineProps({
 			<div class="d-flex justify-content-center">
 				<div class="m-2">
                     <button @click="$emit('listPizza', true)" class="me-2 btn btn-danger">Torna alla lista</button>
-                    <button @click="$emit('createForm', 'modify')" class="me-2 btn btn-danger">Modifica</button>
+                    <button @click="$emit('createForm', 'edit')" class="me-2 btn btn-danger">Modifica</button>
 					<form method="POST">
 						<button class="btn btn-danger">Elimina</button>
 					</form>
