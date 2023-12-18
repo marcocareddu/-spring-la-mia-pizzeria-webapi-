@@ -1,23 +1,32 @@
  <script>
+ import axios from 'axios';
         export default{
             props: ['pizzaProp', 'action'],
             data() {
                 return {
                     pizza: this.pizzaProp,
+                    endpoint: 'http://localhost:8000/api/v1.0/pizzas'
                 };
             },
             methods: {
                 submitForm() {
+                    axios.post(this.endpoint, this.pizza)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
                 }
             }
         };
 
-        </script>
+    </script>
 
 <template>
     <div class="title d-flex justify-content-center">
         <h1 v-if="action === 'create'">Aggiungi nuova Pizza:</h1>
-        <h1 v-if="action === 'edit'">Modifica Pizza:</h1>
+        <h1 v-else>Modifica Pizza:</h1>
     </div>
 
     <form @submit.prevent="submitForm">
@@ -53,7 +62,7 @@
 
         <div class="button-container">
             <button v-if="action === 'create'" class="btn btn-danger">Aggiungi</button>
-            <button v-if="action === 'edit'" class="btn btn-danger">Aggiorna Pizza</button>
+            <button v-else class="btn btn-danger">Aggiorna Pizza</button>
         </div>
     </form>
 </template>
